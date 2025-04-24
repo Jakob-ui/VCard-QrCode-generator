@@ -1,0 +1,378 @@
+<header>
+  <div><h1>Create vCard</h1></div>
+  <div class="checklist">
+      <div>
+        <label class="container">
+          <input
+            type="checkbox"
+            [(ngModel)]="WohnadressePrivat"
+            name="WohnadressePrivat"
+            (click)="changebool(WohnadressePrivat, 'WohnadressePrivat')"
+          />
+          <svg viewBox="0 0 64 64" height="2em" width="2em">
+            <path
+              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+              pathLength="575.0541381835938"
+              class="path"
+            ></path>
+          </svg>
+          <label>Wohnadresse Privat</label>
+        </label>
+      </div>
+      <div>
+        <label class="container">
+          <input
+            type="checkbox"
+            [(ngModel)]="WohnadresseArbeit"
+            name="WohnadresseArbeit"
+            (click)="changebool(WohnadresseArbeit, 'WohnadresseArbeit')"
+          />
+          <svg viewBox="0 0 64 64" height="2em" width="2em">
+            <path
+              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+              pathLength="575.0541381835938"
+              class="path"
+            ></path>
+          </svg>
+          <label>Wohnadresse Arbeit</label>
+        </label>
+      </div>
+      <div>
+        <label class="container">
+          <input
+            type="checkbox"
+            [(ngModel)]="SocialMedia"
+            name="SocialMedia"
+            (click)="changebool(SocialMedia, 'SocialMedia')"
+          />
+          <svg viewBox="0 0 64 64" height="2em" width="2em">
+            <path
+              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+              pathLength="575.0541381835938"
+              class="path"
+            ></path>
+          </svg>
+          <label>Social Media</label>
+        </label>
+      </div>
+    </div>
+  <div><img src="../../../assets/HTB-Plan_Logo.png" /></div>
+</header>
+<div>
+    <div class="forms-container">
+  <form #vcardForm="ngForm" class="Infos">
+    <!-- Name -->
+    <div>
+      <h2>Generelle Daten</h2>
+    </div>
+
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="firstName"
+        placeholder="Vorname"
+        [(ngModel)]="testCard.firstName"
+        name="firstName"
+        required
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="lastName"
+        name="lastName"
+        placeholder="Nachname"
+        [(ngModel)]="testCard.lastName"
+        required
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <!-- Organization -->
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="organization"
+        name="organization"
+        placeholder="Organisation"
+        [(ngModel)]="testCard.organization"
+        required
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <!-- Email -->
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="email"
+        name="email"
+        placeholder="E-Mail"
+        [(ngModel)]="testCard.email"
+        required
+        type="email"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+        <!-- Title -->
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="title"
+        name="title"
+        placeholder="Titel"
+        [(ngModel)]="testCard.title"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <!-- Work Phone -->
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="workPhone"
+        name="workPhone"
+        placeholder="Telefonnummer (Arbeit)"
+        [(ngModel)]="testCard.workPhone"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+  </form>
+
+  <!-- Home Address -->
+  <form #vcardForm="ngForm" class="homeAddress" *ngIf="WohnadressePrivat">
+    <h2>Wohnadresse Privat</h2>
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="street"
+        name="street"
+        placeholder="Straße"
+        [(ngModel)]="testCard.homeAddress.street"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="city"
+        name="city"
+        placeholder="Stadt"
+        [(ngModel)]="testCard.homeAddress.city"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="stateProvince"
+        name="stateProvince"
+        placeholder="Bundesland/Provinz"
+        [(ngModel)]="testCard.homeAddress.stateProvince"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="postalCode"
+        name="postalCode"
+        placeholder="Postleitzahl"
+        [(ngModel)]="testCard.homeAddress.postalCode"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="countryRegion"
+        name="countryRegion"
+        placeholder="Land"
+        [(ngModel)]="testCard.homeAddress.countryRegion"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+  </form>
+
+  <!-- Work Address -->
+  <form #vcardForm="ngForm" class="workAddress" *ngIf="WohnadresseArbeit">
+    <h2>Adresse Arbeit</h2>
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="workStreet"
+        name="workStreet"
+        placeholder="Straße (Arbeit)"
+        [(ngModel)]="testCard.workAddress.street"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="workCity"
+        name="workCity"
+        placeholder="Stadt (Arbeit)"
+        [(ngModel)]="testCard.workAddress.city"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="workStateProvince"
+        name="workStateProvince"
+        placeholder="Bundesland/Provinz (Arbeit)"
+        [(ngModel)]="testCard.workAddress.stateProvince"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="workPostalCode"
+        name="workPostalCode"
+        placeholder="Postleitzahl (Arbeit)"
+        [(ngModel)]="testCard.workAddress.postalCode"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="workCountryRegion"
+        name="workCountryRegion"
+        placeholder="Land (Arbeit)"
+        [(ngModel)]="testCard.workAddress.countryRegion"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+  </form>
+
+  <!-- Social URLs -->
+  <form #vcardForm="ngForm" class="socialUrls" *ngIf="SocialMedia">
+    <h2>Social Media</h2>
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="facebook"
+        name="facebook"
+        placeholder="Facebook"
+        [(ngModel)]="testCard.socialUrls.facebook"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="linkedIn"
+        name="linkedIn"
+        placeholder="LinkedIn"
+        [(ngModel)]="testCard.socialUrls.linkedIn"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="twitter"
+        name="twitter"
+        placeholder="Twitter"
+        [(ngModel)]="testCard.socialUrls.twitter"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="skype"
+        name="skype"
+        placeholder="Skype"
+        [(ngModel)]="testCard.socialUrls.skype"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="flickr"
+        name="flickr"
+        placeholder="Flickr"
+        [(ngModel)]="testCard.socialUrls.flickr"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+
+    <div class="form-control">
+      <input
+        class="input input-alt"
+        id="custom"
+        name="custom"
+        placeholder="Benutzerdefiniert"
+        [(ngModel)]="testCard.socialUrls.custom"
+        type="text"
+      />
+      <span class="input-border input-border-alt"></span>
+    </div>
+  </form>
+</div>
+  <button (click)="generateQrCode()">
+      <span class="shadow"></span>
+  <span class="edge"></span>
+  <span class="front text"> Generate vCard QR Code
+  </span>
+  </button>
+</div>
+
+<div *ngIf="qrCodeImageUrl" class="QRCode">
+  <h3>Your vCard QR Code:</h3>
+  <img [src]="qrCodeImageUrl" alt="vCard QR Code" class="QRimage" />
+  <br />
+  <a [href]="qrCodeImageUrl" [download]="`${testCard.firstName}-${testCard.lastName}-VCard.png`" alt="download QRCode"
+  ><svg
+    viewBox="0 0 256 256"
+    height="32"
+    width="38"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M74.34 85.66a8 8 0 0 1 11.32-11.32L120 108.69V24a8 8 0 0 1 16 0v84.69l34.34-34.35a8 8 0 0 1 11.32 11.32l-48 48a8 8 0 0 1-11.32 0ZM240 136v64a16 16 0 0 1-16 16H32a16 16 0 0 1-16-16v-64a16 16 0 0 1 16-16h52.4a4 4 0 0 1 2.83 1.17L111 145a24 24 0 0 0 34 0l23.8-23.8a4 4 0 0 1 2.8-1.2H224a16 16 0 0 1 16 16m-40 32a12 12 0 1 0-12 12a12 12 0 0 0 12-12"
+      fill="currentColor"
+    ></path></svg
+></a>
+</div>
