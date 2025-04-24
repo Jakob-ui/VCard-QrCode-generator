@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #001f7f;
+  --primary-color: #0037dc;
   --secondary-color: #096B72;
   --tertiary-color: #A78A7F;
   --accent-color: #650D1B;
@@ -16,7 +16,7 @@
 
   /* Schriftfarben */
   --font-color-dark: #333;
-  --font-color-light: #474747;
+  --font-color-light: #7a7a7a;
 
   /* Abstände */
   --padding-small: 0.5rem;
@@ -31,7 +31,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: var(--primary-color);
+  background-color: var(--background-color);
   color: var(--font-color-dark);
   margin: 0;
   padding: 15px;
@@ -56,7 +56,7 @@ header h1{
 
 @media (prefers-color-scheme: dark) {
     :root {
-    --primary-color: #001f7f;
+    --primary-color: #0039e2;
     --secondary-color: #0a3d40; 
     --tertiary-color: #3e3e3e;
     --accent-color: #8b3a3a; 
