@@ -4,10 +4,14 @@
   --tertiary-color: #A78A7F;
   --accent-color: #650D1B;
   --accent-color2: #E7D7C1;
+  --accent-color3: rgb(160, 160, 160);
   --success-color: #28a745;
   --error-color: #dc3545;
 
+  --htb-color: #001f7f;
+
  --background-color: #fbfbfb;
+ --background-color2: #a8a8a8;
 
   /* Schriftgrößen */
   --font-size-small: 0.8rem;
@@ -17,6 +21,8 @@
   /* Schriftfarben */
   --font-color-dark: #333;
   --font-color-light: #7a7a7a;
+  --font-color-white: #ffffff;
+  --font-color-black: #ffffff;
 
   /* Abstände */
   --padding-small: 0.5rem;
@@ -34,24 +40,28 @@ body {
   background-color: var(--background-color);
   color: var(--font-color-dark);
   margin: 0;
-  padding: 15px;
+  padding: 0;
 }
 
 header{
     box-shadow: var(--box-shadow);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: -15px -15px 0 -15px; 
+    background-color: var(--accent-color3);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 header img{
-    width: 130px;
-    padding-right: 20px;
+    width: 100px;
+    padding: 0px 20px 0 20px;
 }
 
 header h1{
-    padding: 20px;
+    padding: 0px 20px 0 20px;
+    font-size: var(--font-size-large);
 } 
 
 @media (prefers-color-scheme: dark) {
@@ -61,10 +71,12 @@ header h1{
     --tertiary-color: #3e3e3e;
     --accent-color: #8b3a3a; 
     --accent-color2: #5a5a5a;
+    --accent-color3: #121212;
     --success-color: #1e7e34;
     --error-color: #a71d2a;
     
     --background-color: #121212;
+    --background-color2: #2a2a2a;
 
     /* Schriftfarben */
     --font-color-dark: #e0e0e0;

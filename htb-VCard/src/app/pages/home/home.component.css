@@ -1,3 +1,155 @@
+/* Header-Container */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--background-color);
+  box-shadow: var(--box-shadow);
+}
+
+/* Burger-Menü */
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  align-items: center;
+}
+
+.burger-menu input {
+  display: none;
+}
+
+.burger-menu label {
+  position: relative;
+  width: 40px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.burger-menu span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background-color: var(--font-color-dark);
+  border-radius: 2px;
+  transition: 0.3s ease-in-out;
+}
+/* Hintergrund-Overlay */
+.overlay-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dunkler Hintergrund */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  z-index: 999; /* Unter dem Overlay-Menü */
+}
+
+.overlay-background.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Checkliste-Overlay */
+.checklist-overlay {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100%;
+  background-color: var(--background-color);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000; /* Über dem Hintergrund */
+}
+
+.checklist-overlay.active {
+  right: 0;
+}
+
+/* Schließen-Button */
+.close-button {
+  top: 10px;
+  margin: 20px;
+  display: flex;
+  justify-self: end;
+  justify-content: end;
+  background: transparent;
+  width: 30px;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--font-color-dark);
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: var(--primary-color);
+}
+
+/* Checkliste */
+.checklist {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.checklist label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: var(--font-color-dark);
+}
+
+.checklist svg {
+  margin-left: 10px;
+}
+
+/* Reset-Button */
+.Resetbutton {
+  justify-self: end;
+  margin: 15px 0px 2px 0px;
+  width: 90%;
+}
+.generateQrCodeButton
+{
+  width: 50%;
+  margin: auto;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .burger-menu {
+    display: flex;
+  }
+
+  .checklist {
+    flex-direction: column;
+    margin: 0px 10px 10px 10px;
+    padding: 0px 10px 10px 10px;
+  }
+}
+
+
+
+.inhalt{
+  padding: 15px;
+  min-height: 500px;
+}
 form {
   max-width: 500px;
   margin: 20px auto 20px auto;
@@ -97,8 +249,8 @@ button:hover {
   height: 3px;
   background: linear-gradient(
     90deg,
-    var(--success-color) 0%,
-    var(--accent-color) 50%,
+    var(--htb-color) 0%,
+    var(--background-color) 50%,
     var(--primary-color) 100%
   );
   transition: width 0.4s cubic-bezier(0.42, 0, 0.58, 1.0);
@@ -108,20 +260,17 @@ button:hover {
   width: 100%;
 }
 
-.checklist{
-    display: flex;
-    margin-top: 15px;
-}
-
 .checklist label{
     align-items: center;
     display: flex;
+    justify-content: end;
     padding-left: 13px;
     margin-right: 10px;
 }
 
 .container {
   cursor: pointer;
+  padding-top: 10px;
 }
 
 .container input {
@@ -240,7 +389,7 @@ button {
  padding: 12px 27px;
  border-radius: 12px;
  font-size: 1.1rem;
- color: var(--font-color-light);
+ color: var(--font-color-white);
  background: var(--primary-color);
  will-change: transform;
  transform: translateY(-4px);
@@ -279,4 +428,26 @@ button:active .shadow {
 
 button:focus:not(:focus-visible) {
  outline: none;
+}
+
+.QRCode{
+  padding: 15px;
+
+}
+.QrCodeText {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+}
+
+footer{
+  margin-top: 20px;
+  height: 60px;
+  background-color: var(--background-color2);
+}
+
+footer div{
+  justify-self: end;
+  padding: 20px 60px 20px 20px;
 }

@@ -44,6 +44,7 @@ export class HomeComponent {
   WohnadressePrivat: boolean = false;
   WohnadresseArbeit: boolean = false;
   SocialMedia: boolean = false;
+  menuOpen: boolean = false;
 
   constructor() {
     // Überprüfen, ob sessionStorage verfügbar ist
@@ -61,6 +62,13 @@ export class HomeComponent {
   }
 
   generateVCard(): string {
+    const socialUrls = this.testCard.socialUrls
+      ? Object.entries(this.testCard.socialUrls)
+          .filter(([key, value]) => value) // Nur Felder mit Werten einfügen
+          .map(([key, value]) => `URL;TYPE=${key}:${value}`)
+          .join('\n')
+      : '';
+
     return `
 BEGIN:VCARD
 VERSION:4.0
@@ -77,6 +85,12 @@ ADR;TYPE=home:;;${this.testCard.homeAddress?.street ?? ''};${
     };${this.testCard.homeAddress?.stateProvince ?? ''};${
       this.testCard.homeAddress?.postalCode ?? ''
     };${this.testCard.homeAddress?.countryRegion ?? ''}
+ADR;TYPE=work:;;${this.testCard.workAddress?.street ?? ''};${
+      this.testCard.workAddress?.city ?? ''
+    };${this.testCard.workAddress?.stateProvince ?? ''};${
+      this.testCard.workAddress?.postalCode ?? ''
+    };${this.testCard.workAddress?.countryRegion ?? ''}
+${socialUrls}
 END:VCARD
   `.trim();
   }
@@ -109,5 +123,50 @@ END:VCARD
     }
 
     console.log(`Updated ${saveinStorage} to ${newValue} in sessionStorage`);
+  }
+
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  closeMenu(): void {
+    this.menuOpen = false;
+  }
+
+  resetForm(): void {
+    // Setze alle Felder des VCard-Objekts zurück
+    this.testCard = {
+      version: '4.0',
+      firstName: '',
+      lastName: '',
+      organization: '',
+      email: '',
+      workPhone: '',
+      homeAddress: {
+        label: '',
+        street: '',
+        city: '',
+        stateProvince: '',
+        postalCode: '',
+        countryRegion: '',
+      },
+      socialUrls: {
+        facebook: '',
+        linkedIn: '',
+      },
+      workAddress: {
+        label: '',
+        street: '',
+        city: '',
+        stateProvince: '',
+        postalCode: '',
+        countryRegion: '',
+      },
+    };
+
+    // Setze den QR-Code zurück
+    this.qrCodeImageUrl = '';
+
+    console.log('Form and QR Code have been reset.');
   }
 }
