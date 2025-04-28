@@ -42,5 +42,6 @@ testem.log
 Thumbs.db
 
 
-src\assets\o-favicon.ico
-src\assets\o-Logo.png
+src/assets/o-favicon.ico
+src/assets/o-Logo.png
+src/assets/QR-Logo.svg

@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import * as QRCode from 'qrcode';
 import { VCard } from '../../objects/VCard';
+import QRCodeStyling from 'qr-code-styling';
 
 @Component({
   selector: 'app-home',
@@ -41,6 +42,7 @@ export class HomeComponent {
   };
 
   Logo: string = '../../../assets/o-Logo.png';
+  QRLogo: string = '../../../assets/QR-Logo.svg';
 
   qrCodeImageUrl: string = '';
 
@@ -100,12 +102,38 @@ END:VCARD
 
   generateQrCode(): void {
     const vCardData = this.generateVCard();
-    QRCode.toDataURL(vCardData, { errorCorrectionLevel: 'H' }, (err, url) => {
-      if (err) {
-        console.error('Error generating QR Code', err);
-        return;
+
+    const qrCode = new QRCodeStyling({
+      width: 300,
+      height: 300,
+      margin: 1,
+      type: 'svg', // Kann auch 'canvas' sein
+      data: vCardData,
+      image: this.QRLogo, // Pfad zum Logo
+      dotsOptions: {
+        color: '#000', // Farbe der QR-Code-Punkte
+        type: 'rounded', // Stil der Punkte
+      },
+      backgroundOptions: {
+        color: '#fff', // Hintergrundfarbe
+      },
+      imageOptions: {
+        crossOrigin: 'anonymous', // Wichtig, wenn das Logo von einer externen Quelle stammt
+        margin: 5, // Abstand des Logos
+      },
+    });
+
+    // QR-Code als Data-URL generieren und speichern
+    qrCode.getRawData('png').then((blob) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.qrCodeImageUrl = reader.result as string; // Speichere die Data-URL
+      };
+      if (blob instanceof Blob) {
+        reader.readAsDataURL(blob);
+      } else {
+        console.error('Expected a Blob but received a different type.');
       }
-      this.qrCodeImageUrl = url;
     });
   }
 
