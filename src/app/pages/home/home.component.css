@@ -7,7 +7,20 @@
   background-color: var(--background-color);
   box-shadow: var(--box-shadow);
 }
-
+.TitelLogo{
+  display: flex;
+  align-items: center;
+  height: auto;
+}
+.Logo img{
+width: 100px;
+}
+.x img{
+  filter: invert();
+  height: 20px;
+  width: auto;
+  padding: 0px 10px 0 10px;
+}
 /* Burger-Menü */
 .burger-menu {
   display: flex;
@@ -15,6 +28,7 @@
   cursor: pointer;
   gap: 5px;
   align-items: center;
+  margin: 10px;
 }
 
 .burger-menu input {
@@ -141,6 +155,25 @@
     flex-direction: column;
     margin: 0px 10px 10px 10px;
     padding: 0px 10px 10px 10px;
+  }
+
+  .TitelLogo{
+  display:inline;
+  align-items: center;
+
+  }
+  .TitelLogo h1{
+  padding-bottom: -5px;
+  margin-bottom: -5px;
+  }
+  .Logo img{
+  width: 100px;
+  padding: 0 0 0 20px;
+  }
+  .x img{
+    height: 0px;
+    padding: 0px;
+    opacity: 0;
   }
 }
 

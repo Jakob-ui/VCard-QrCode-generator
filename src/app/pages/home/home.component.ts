@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import * as QRCode from 'qrcode';
 import { VCard } from '../../objects/VCard';
+
 @Component({
   selector: 'app-home',
   imports: [CommonModule, FormsModule],
@@ -38,6 +39,8 @@ export class HomeComponent {
       countryRegion: '',
     },
   };
+
+  Logo: string = '../../../assets/o-Logo.png';
 
   qrCodeImageUrl: string = '';
 

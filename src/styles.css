@@ -54,13 +54,8 @@ header{
   align-items: center;
 }
 
-header img{
-    width: 100px;
-    padding: 0px 20px 0 20px;
-}
-
 header h1{
-    padding: 0px 20px 0 20px;
+    padding: 0px 0px 0px 20px;
     font-size: var(--font-size-large);
 } 
 
