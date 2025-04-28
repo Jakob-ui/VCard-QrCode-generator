@@ -93,10 +93,12 @@ width: 100px;
 /* Schließen-Button */
 .close-button {
   top: 10px;
-  margin: 20px;
+  margin: 10px 8px 20px 0;
+  padding: 5px 20px 5px 20px;
   display: flex;
   justify-self: end;
-  justify-content: end;
+  align-items: center;
+  justify-content: center;
   background: transparent;
   width: 30px;
   border: none;

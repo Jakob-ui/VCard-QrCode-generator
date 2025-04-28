@@ -2,8 +2,9 @@
   <div class="header-container">
     <div class="TitelLogo">
       <h1>Create vCard</h1>
-      <div class="x"><img src="../../../assets/x.png"></div>
-    <div class="Logo"><img [src]="Logo" /></div></div>
+      <div class="x"><img src="../../../assets/x.png" /></div>
+      <div class="Logo"><img [src]="Logo" /></div>
+    </div>
     <div class="burger-menu">
       <input type="checkbox" id="menu-toggle" (change)="toggleMenu()" />
       <label for="menu-toggle" class="burger">
@@ -25,70 +26,70 @@
   <div class="checklist-overlay" [class.active]="menuOpen">
     <div class="checklist">
       <div class="closeButton">
-      <button class="close-button" (click)="closeMenu()">✖</button>
+        <button class="close-button" (click)="closeMenu()">✖</button>
       </div>
       <div>
-      <label class="container">
-        <label>Wohnadresse Privat</label>
-        <input
-          type="checkbox"
-          [(ngModel)]="WohnadressePrivat"
-          name="WohnadressePrivat"
-          (click)="changebool(WohnadressePrivat, 'WohnadressePrivat')"
-        />
-        <svg viewBox="0 0 64 64" height="2em" width="2em">
-          <path
-            d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-            pathLength="575.0541381835938"
-            class="path"
-          ></path>
-        </svg>
-      </label>
+        <label class="container">
+          <label>Wohnadresse Privat</label>
+          <input
+            type="checkbox"
+            [(ngModel)]="WohnadressePrivat"
+            name="WohnadressePrivat"
+            (click)="changebool(WohnadressePrivat, 'WohnadressePrivat')"
+          />
+          <svg viewBox="0 0 64 64" height="2em" width="2em">
+            <path
+              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+              pathLength="575.0541381835938"
+              class="path"
+            ></path>
+          </svg>
+        </label>
+      </div>
+      <div>
+        <label class="container">
+          <label>Wohnadresse Arbeit</label>
+          <input
+            type="checkbox"
+            [(ngModel)]="WohnadresseArbeit"
+            name="WohnadresseArbeit"
+            (click)="changebool(WohnadresseArbeit, 'WohnadresseArbeit')"
+          />
+          <svg viewBox="0 0 64 64" height="2em" width="2em">
+            <path
+              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+              pathLength="575.0541381835938"
+              class="path"
+            ></path>
+          </svg>
+        </label>
+      </div>
+      <div>
+        <label class="container">
+          <label>Social Media</label>
+          <input
+            type="checkbox"
+            [(ngModel)]="SocialMedia"
+            name="SocialMedia"
+            (click)="changebool(SocialMedia, 'SocialMedia')"
+          />
+          <svg viewBox="0 0 64 64" height="2em" width="2em">
+            <path
+              d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+              pathLength="575.0541381835938"
+              class="path"
+            ></path>
+          </svg>
+        </label>
+      </div>
+      <div>
+        <button (click)="resetForm()" class="Resetbutton">
+          <span class="shadow"></span>
+          <span class="edge"></span>
+          <span class="front text"> Reset all Fields </span>
+        </button>
+      </div>
     </div>
-    <div>
-      <label class="container">
-        <label>Wohnadresse Arbeit</label>
-        <input
-          type="checkbox"
-          [(ngModel)]="WohnadresseArbeit"
-          name="WohnadresseArbeit"
-          (click)="changebool(WohnadresseArbeit, 'WohnadresseArbeit')"
-        />
-        <svg viewBox="0 0 64 64" height="2em" width="2em">
-          <path
-            d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-            pathLength="575.0541381835938"
-            class="path"
-          ></path>
-        </svg>
-      </label>
-    </div>
-    <div>
-      <label class="container">
-        <label>Social Media</label>
-        <input
-          type="checkbox"
-          [(ngModel)]="SocialMedia"
-          name="SocialMedia"
-          (click)="changebool(SocialMedia, 'SocialMedia')"
-        />
-        <svg viewBox="0 0 64 64" height="2em" width="2em">
-          <path
-            d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-            pathLength="575.0541381835938"
-            class="path"
-          ></path>
-        </svg>
-      </label>
-    </div>
-    <div>
-    <button (click)="resetForm()" class="Resetbutton">
-      <span class="shadow"></span>
-      <span class="edge"></span>
-      <span class="front text"> Reset all Fields </span>
-    </button>
-    </div>
-  </div>
   </div>
 </header>
 <div class="inhalt">
@@ -103,9 +104,22 @@
         <input
           class="input input-alt"
           id="firstName"
-          placeholder="Vorname"
-          [(ngModel)]="testCard.firstName"
+          placeholder="Vorname *"
+          [(ngModel)]="VCardData.firstName"
           name="firstName"
+          required
+          type="text"
+        />
+        <span class="input-border input-border-alt"></span>
+      </div>
+
+      <div class="form-control">
+        <input
+          class="input input-alt"
+          id="middleName"
+          name="middleName"
+          placeholder="2. Vorname"
+          [(ngModel)]="VCardData.middleName"
           required
           type="text"
         />
@@ -117,8 +131,8 @@
           class="input input-alt"
           id="lastName"
           name="lastName"
-          placeholder="Nachname"
-          [(ngModel)]="testCard.lastName"
+          placeholder="Nachname *"
+          [(ngModel)]="VCardData.lastName"
           required
           type="text"
         />
@@ -132,7 +146,7 @@
           id="organization"
           name="organization"
           placeholder="Organisation"
-          [(ngModel)]="testCard.organization"
+          [(ngModel)]="VCardData.organization"
           required
           type="text"
         />
@@ -146,7 +160,7 @@
           id="email"
           name="email"
           placeholder="E-Mail"
-          [(ngModel)]="testCard.email"
+          [(ngModel)]="VCardData.email"
           required
           type="email"
         />
@@ -160,7 +174,7 @@
           id="title"
           name="title"
           placeholder="Titel"
-          [(ngModel)]="testCard.title"
+          [(ngModel)]="VCardData.title"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -172,12 +186,27 @@
           class="input input-alt"
           id="workPhone"
           name="workPhone"
-          placeholder="Telefonnummer (Arbeit)"
-          [(ngModel)]="testCard.workPhone"
+          placeholder="Telefonnummer (Arbeit) *"
+          [(ngModel)]="VCardData.workPhone"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
       </div>
+
+      
+      <!-- Private Phone -->
+      <!--<div class="form-control">
+        <input
+          class="input input-alt"
+          id="workPhone"
+          name="workPhone"
+          placeholder="Telefonnummer (Privat)"
+          [(ngModel)]="VCardData.cellPhone"
+          type="text"
+        />
+        <span class="input-border input-border-alt"></span>
+      </div>-->
+    
     </form>
 
     <!-- Home Address -->
@@ -189,7 +218,7 @@
           id="street"
           name="street"
           placeholder="Straße"
-          [(ngModel)]="testCard.homeAddress.street"
+          [(ngModel)]="VCardData.homeAddress.street"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -201,7 +230,7 @@
           id="city"
           name="city"
           placeholder="Stadt"
-          [(ngModel)]="testCard.homeAddress.city"
+          [(ngModel)]="VCardData.homeAddress.city"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -213,7 +242,7 @@
           id="stateProvince"
           name="stateProvince"
           placeholder="Bundesland/Provinz"
-          [(ngModel)]="testCard.homeAddress.stateProvince"
+          [(ngModel)]="VCardData.homeAddress.stateProvince"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -225,7 +254,7 @@
           id="postalCode"
           name="postalCode"
           placeholder="Postleitzahl"
-          [(ngModel)]="testCard.homeAddress.postalCode"
+          [(ngModel)]="VCardData.homeAddress.postalCode"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -237,7 +266,7 @@
           id="countryRegion"
           name="countryRegion"
           placeholder="Land"
-          [(ngModel)]="testCard.homeAddress.countryRegion"
+          [(ngModel)]="VCardData.homeAddress.countryRegion"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -253,7 +282,7 @@
           id="workStreet"
           name="workStreet"
           placeholder="Straße (Arbeit)"
-          [(ngModel)]="testCard.workAddress.street"
+          [(ngModel)]="VCardData.workAddress.street"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -265,7 +294,7 @@
           id="workCity"
           name="workCity"
           placeholder="Stadt (Arbeit)"
-          [(ngModel)]="testCard.workAddress.city"
+          [(ngModel)]="VCardData.workAddress.city"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -277,7 +306,7 @@
           id="workStateProvince"
           name="workStateProvince"
           placeholder="Bundesland/Provinz (Arbeit)"
-          [(ngModel)]="testCard.workAddress.stateProvince"
+          [(ngModel)]="VCardData.workAddress.stateProvince"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -289,7 +318,7 @@
           id="workPostalCode"
           name="workPostalCode"
           placeholder="Postleitzahl (Arbeit)"
-          [(ngModel)]="testCard.workAddress.postalCode"
+          [(ngModel)]="VCardData.workAddress.postalCode"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -301,7 +330,7 @@
           id="workCountryRegion"
           name="workCountryRegion"
           placeholder="Land (Arbeit)"
-          [(ngModel)]="testCard.workAddress.countryRegion"
+          [(ngModel)]="VCardData.workAddress.countryRegion"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -317,7 +346,7 @@
           id="facebook"
           name="facebook"
           placeholder="Facebook"
-          [(ngModel)]="testCard.socialUrls.facebook"
+          [(ngModel)]="VCardData.socialUrls.facebook"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -329,7 +358,7 @@
           id="linkedIn"
           name="linkedIn"
           placeholder="LinkedIn"
-          [(ngModel)]="testCard.socialUrls.linkedIn"
+          [(ngModel)]="VCardData.socialUrls.linkedIn"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -341,7 +370,7 @@
           id="twitter"
           name="twitter"
           placeholder="Twitter"
-          [(ngModel)]="testCard.socialUrls.twitter"
+          [(ngModel)]="VCardData.socialUrls.twitter"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -353,7 +382,7 @@
           id="skype"
           name="skype"
           placeholder="Skype"
-          [(ngModel)]="testCard.socialUrls.skype"
+          [(ngModel)]="VCardData.socialUrls.skype"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -365,7 +394,7 @@
           id="flickr"
           name="flickr"
           placeholder="Flickr"
-          [(ngModel)]="testCard.socialUrls.flickr"
+          [(ngModel)]="VCardData.socialUrls.flickr"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -377,7 +406,7 @@
           id="custom"
           name="custom"
           placeholder="Benutzerdefiniert"
-          [(ngModel)]="testCard.socialUrls.custom"
+          [(ngModel)]="VCardData.socialUrls.custom"
           type="text"
         />
         <span class="input-border input-border-alt"></span>
@@ -385,23 +414,23 @@
     </form>
   </div>
   <div class="generateQrCodeButton">
-  <button (click)="generateQrCode()">
-    <span class="shadow"></span>
-    <span class="edge"></span>
-    <span class="front text"> Generate vCard QR Code </span>
-  </button>
+    <button (click)="generateQrCode()">
+      <span class="shadow"></span>
+      <span class="edge"></span>
+      <span class="front text"> Generate vCard QR Code </span>
+    </button>
   </div>
 </div>
 
 <div *ngIf="qrCodeImageUrl" class="QRCode">
   <div class="QrCodeText">
-  <h3>Your vCard QR Code:</h3>
+    <h3>Your vCard QR Code:</h3>
   </div>
   <img [src]="qrCodeImageUrl" alt="vCard QR Code" class="QRimage" />
   <br />
   <a
     [href]="qrCodeImageUrl"
-    [download]="`${testCard.firstName}-${testCard.lastName}-VCard.png`"
+    [download]="`${VCardData.firstName}-${VCardData.lastName}-VCard.png`"
     alt="download QRCode"
     ><svg
       viewBox="0 0 256 256"

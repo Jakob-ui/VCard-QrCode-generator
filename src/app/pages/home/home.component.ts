@@ -12,13 +12,15 @@ import QRCodeStyling from 'qr-code-styling';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  testCard: VCard = {
+  VCardData: VCard = {
     version: '4.0',
     firstName: '',
+    middleName: '',
     lastName: '',
     organization: '',
     email: '',
     workPhone: '',
+    cellPhone: '',
     homeAddress: {
       label: '',
       street: '',
@@ -67,59 +69,73 @@ export class HomeComponent {
   }
 
   generateVCard(): string {
-    const socialUrls = this.testCard.socialUrls
-      ? Object.entries(this.testCard.socialUrls)
+    const encode = (value: string | undefined): string =>
+      value ? unescape(encodeURIComponent(value)) : '';
+
+    const socialUrls = this.VCardData.socialUrls
+      ? Object.entries(this.VCardData.socialUrls)
           .filter(([key, value]) => value) // Nur Felder mit Werten einfügen
-          .map(([key, value]) => `URL;TYPE=${key}:${value}`)
+          .map(([key, value]) => `URL;TYPE=${key}:${encode(value)}`)
           .join('\n')
       : '';
 
     return `
 BEGIN:VCARD
 VERSION:4.0
-FN:${this.testCard.firstName} ${this.testCard.lastName}
-N:${this.testCard.lastName};${this.testCard.firstName};;${
-      this.testCard.title ?? ''
-    }
-ORG:${this.testCard.organization}
-EMAIL:${this.testCard.email}
-TEL;TYPE=work,voice:${this.testCard.workPhone ?? ''}
-TEL;TYPE=home,voice:${this.testCard.homePhone ?? ''}
-ADR;TYPE=home:;;${this.testCard.homeAddress?.street ?? ''};${
-      this.testCard.homeAddress?.city ?? ''
-    };${this.testCard.homeAddress?.stateProvince ?? ''};${
-      this.testCard.homeAddress?.postalCode ?? ''
-    };${this.testCard.homeAddress?.countryRegion ?? ''}
-ADR;TYPE=work:;;${this.testCard.workAddress?.street ?? ''};${
-      this.testCard.workAddress?.city ?? ''
-    };${this.testCard.workAddress?.stateProvince ?? ''};${
-      this.testCard.workAddress?.postalCode ?? ''
-    };${this.testCard.workAddress?.countryRegion ?? ''}
+FN:${encode(this.VCardData.firstName)} ${encode(
+      this.VCardData.middleName
+    )} ${encode(this.VCardData.lastName)}
+N:${encode(this.VCardData.lastName)};${encode(
+      this.VCardData.firstName
+    )};;${encode(this.VCardData.title ?? '')}
+ORG:${encode(this.VCardData.organization)}
+EMAIL:${encode(this.VCardData.email)}
+TEL;TYPE=work,voice:${encode(this.VCardData.workPhone ?? '')}
+TEL;TYPE=home,voice:${encode(this.VCardData.homePhone ?? '')}
+ADR;TYPE=home:;;${encode(this.VCardData.homeAddress?.street ?? '')};${encode(
+      this.VCardData.homeAddress?.city ?? ''
+    )};${encode(this.VCardData.homeAddress?.stateProvince ?? '')};${encode(
+      this.VCardData.homeAddress?.postalCode ?? ''
+    )};${encode(this.VCardData.homeAddress?.countryRegion ?? '')}
+ADR;TYPE=work:;;${encode(this.VCardData.workAddress?.street ?? '')};${encode(
+      this.VCardData.workAddress?.city ?? ''
+    )};${encode(this.VCardData.workAddress?.stateProvince ?? '')};${encode(
+      this.VCardData.workAddress?.postalCode ?? ''
+    )};${encode(this.VCardData.workAddress?.countryRegion ?? '')}
 ${socialUrls}
 END:VCARD
   `.trim();
   }
 
   generateQrCode(): void {
+    if (
+      !this.VCardData.firstName ||
+      !this.VCardData.lastName ||
+      !this.VCardData.workPhone
+    ) {
+      alert(
+        'Füllen Sie die benötigten Felder aus: \n\n -Vorname* \n -Nachname* \n -Telefonnummer*'
+      );
+      return;
+    }
     const vCardData = this.generateVCard();
 
     const qrCode = new QRCodeStyling({
-      width: 300,
-      height: 300,
-      margin: 1,
-      type: 'svg', // Kann auch 'canvas' sein
+      width: 500,
+      height: 500,
+      type: 'canvas',
       data: vCardData,
-      image: this.QRLogo, // Pfad zum Logo
+      image: this.QRLogo,
       dotsOptions: {
-        color: '#000', // Farbe der QR-Code-Punkte
-        type: 'rounded', // Stil der Punkte
+        color: '#000',
+        type: 'rounded',
       },
       backgroundOptions: {
-        color: '#fff', // Hintergrundfarbe
+        color: '#fff',
       },
       imageOptions: {
-        crossOrigin: 'anonymous', // Wichtig, wenn das Logo von einer externen Quelle stammt
-        margin: 5, // Abstand des Logos
+        crossOrigin: 'anonymous',
+        margin: 5,
       },
     });
 
@@ -127,7 +143,7 @@ END:VCARD
     qrCode.getRawData('png').then((blob) => {
       const reader = new FileReader();
       reader.onload = () => {
-        this.qrCodeImageUrl = reader.result as string; // Speichere die Data-URL
+        this.qrCodeImageUrl = reader.result as string;
       };
       if (blob instanceof Blob) {
         reader.readAsDataURL(blob);
@@ -166,7 +182,7 @@ END:VCARD
 
   resetForm(): void {
     // Setze alle Felder des VCard-Objekts zurück
-    this.testCard = {
+    this.VCardData = {
       version: '4.0',
       firstName: '',
       lastName: '',
