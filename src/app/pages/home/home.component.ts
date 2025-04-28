@@ -32,6 +32,7 @@ export class HomeComponent {
     socialUrls: {
       facebook: '',
       linkedIn: '',
+      custom: '',
     },
     workAddress: {
       label: '',
@@ -74,7 +75,7 @@ export class HomeComponent {
 
     const socialUrls = this.VCardData.socialUrls
       ? Object.entries(this.VCardData.socialUrls)
-          .filter(([key, value]) => value) // Nur Felder mit Werten einfügen
+          .filter(([key, value]) => value)
           .map(([key, value]) => `URL;TYPE=${key}:${encode(value)}`)
           .join('\n')
       : '';
