@@ -1,59 +1,52 @@
-# HtbVCard
+# VCard-QR-Code-Generator
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
+Dieses Projekt ist eine Webanwendung, die aus bestimmten Eingabedaten einen QR-Code generiert. Scannt man diesen QR-Code mit einem Smartphone, werden die Kontaktdaten der Person als VCard (visitenkarte) erkannt und können einfach zum Adressbuch hinzugefügt werden.
 
-## Development server
+## Docker
 
-To start a local development server, run:
+Die Anwendung kann einfach mithilfe des mitgelieferten `Dockerfile` als Docker-Image gebaut und ausgeführt werden.
 
-```bash
-ng serve
-```
+## Technologie
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+* **Webserver:** Nginx
+* **Interner Port:** 4000
+* **Frontend:** Angular
+* **Server-Side Rendering (SSR):** Implementiert für eine schnellere initiale Seitenladezeit und verbesserte Performance.
 
-## Code scaffolding
+## Verwendung
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1.  **Docker Image bauen (optional):**
+    Navigiere zum Hauptverzeichnis des Projekts und führe folgenden Befehl aus:
+    ```bash
+    docker build -t vcard-qrcode-generator .
+    ```
 
-```bash
-ng generate component component-name
-```
+2.  **Docker Container starten:**
+    ```bash
+    docker run -p 80:4000 vcard-qrcode-generator
+    ```
+    oder wenn du das Image selbst gebaut hast:
+    ```bash
+    docker run -p 80:4000 <dein-image-name>
+    ```
+    Die Anwendung ist nun unter `http://localhost` (oder der entsprechenden IP-Adresse deines Docker-Hosts) im Browser erreichbar.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+3.  **Daten eingeben:**
+    Über die Benutzeroberfläche kannst du die relevanten Kontaktdaten (Name, Telefonnummer, E-Mail, etc.) eingeben.
 
-```bash
-ng generate --help
-```
+4.  **QR-Code generieren:**
+    Nachdem du alle Daten eingegeben hast, klicke auf den "Generieren"-Button. Die Anwendung erstellt daraufhin einen QR-Code.
 
-## Building
+5.  **QR-Code scannen:**
+    Öffne die Kamera-App deines Smartphones oder eine QR-Code-Scanner-App und richte sie auf den generierten QR-Code.
 
-To build the project run:
+6.  **Kontaktdaten speichern:**
+    Dein Smartphone erkennt die VCard-Daten und bietet dir an, den Kontakt zu speichern.
 
-```bash
-ng build
-```
+## Features
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* Einfache und intuitive Benutzeroberfläche.
+* Generierung von QR-Codes im VCard-Format.
+* Download des Qr-Codes als PNG
+* Dockerisierung für einfache Bereitstellung.
+* Schnelle Performance dank Server-Side Rendering mit Angular.
