@@ -122,8 +122,8 @@ END:VCARD
     const vCardData = this.generateVCard();
 
     const qrCode = new QRCodeStyling({
-      width: 500,
-      height: 500,
+      width: 450,
+      height: 450,
       type: 'canvas',
       data: vCardData,
       image: this.QRLogo,
@@ -136,7 +136,7 @@ END:VCARD
       },
       imageOptions: {
         crossOrigin: 'anonymous',
-        margin: 5,
+        margin: 10,
       },
     });
 
